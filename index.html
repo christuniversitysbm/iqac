@@ -1,0 +1,321 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>NAAC Criterion 7 - Faculty Data Collection</title>
+  <style>
+    :root {
+      --primary: #1a56db;
+      --primary-hover: #1e429f;
+      --bg: #f3f4f6;
+      --card: #ffffff;
+      --text: #1f2937;
+      --muted: #6b7280;
+      --border: #d1d5db;
+      --success-bg: #def7ec;
+      --success-text: #03543f;
+      --error-bg: #fde8e8;
+      --error-text: #9b1c1c;
+    }
+
+    * {
+      box-sizing: border-box;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    }
+
+    body {
+      background-color: var(--bg);
+      color: var(--text);
+      margin: 0;
+      padding: 2rem 1rem;
+      line-height: 1.5;
+    }
+
+    .container {
+      max-width: 760px;
+      margin: 0 auto;
+      background: var(--card);
+      padding: 2.5rem;
+      border-radius: 12px;
+      box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+      border-top: 6px solid var(--primary);
+    }
+
+    h1 {
+      font-size: 1.5rem;
+      margin-top: 0;
+      margin-bottom: 0.5rem;
+      color: #111827;
+    }
+
+    .subtitle {
+      color: var(--muted);
+      font-size: 0.95rem;
+      margin-bottom: 2rem;
+      border-bottom: 1px solid #e5e7eb;
+      padding-bottom: 1rem;
+    }
+
+    .grid-2 {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1.25rem;
+    }
+
+    @media (max-width: 600px) {
+      .grid-2 { grid-template-columns: 1fr; }
+      .container { padding: 1.5rem; }
+    }
+
+    .form-group {
+      margin-bottom: 1.25rem;
+    }
+
+    label {
+      display: block;
+      font-weight: 600;
+      font-size: 0.9rem;
+      margin-bottom: 0.4rem;
+    }
+
+    label span.req {
+      color: #dc2626;
+    }
+
+    .helper-text {
+      font-size: 0.8rem;
+      color: var(--muted);
+      margin-top: 0.25rem;
+      display: block;
+    }
+
+    input[type="text"],
+    input[type="email"],
+    input[type="date"],
+    input[type="number"],
+    input[type="url"],
+    select,
+    textarea {
+      width: 100%;
+      padding: 0.65rem 0.75rem;
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      font-size: 0.95rem;
+      color: var(--text);
+      transition: border-color 0.15s;
+    }
+
+    input:focus, select:focus, textarea:focus {
+      outline: none;
+      border-color: var(--primary);
+      box-shadow: 0 0 0 3px rgba(26, 86, 219, 0.15);
+    }
+
+    textarea {
+      resize: vertical;
+      min-height: 120px;
+    }
+
+    button {
+      width: 100%;
+      background-color: var(--primary);
+      color: white;
+      font-weight: 600;
+      font-size: 1rem;
+      padding: 0.85rem;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+      transition: background-color 0.2s;
+      margin-top: 0.5rem;
+    }
+
+    button:hover {
+      background-color: var(--primary-hover);
+    }
+
+    button:disabled {
+      background-color: #9ca3af;
+      cursor: not-allowed;
+    }
+
+    #statusMessage {
+      display: none;
+      margin-top: 1.25rem;
+      padding: 1rem;
+      border-radius: 6px;
+      font-weight: 500;
+      text-align: center;
+    }
+
+    .success {
+      background-color: var(--success-bg);
+      color: var(--success-text);
+      border: 1px solid #84e1bc;
+    }
+
+    .error {
+      background-color: var(--error-bg);
+      color: var(--error-text);
+      border: 1px solid #f8b4b4;
+    }
+  </style>
+</head>
+<body>
+
+<div class="container">
+  <h1>Departmental Activity & QLM Data Collection</h1>
+  <p class="subtitle">
+    Please submit details regarding Constitutional Obligations sensitisation programs and Gender Equity promotion measures conducted by the department. (Submit once per activity/initiative).
+  </p>
+
+  <form id="naacForm">
+    <div class="grid-2">
+      <div class="form-group">
+        <label for="facultyName">Faculty Name <span class="req">*</span></label>
+        <input type="text" id="facultyName" name="facultyName" required placeholder="e.g., Dr. A. Sharma" />
+      </div>
+
+      <div class="form-group">
+        <label for="designation">Designation <span class="req">*</span></label>
+        <select id="designation" name="designation" required>
+          <option value="">-- Select Designation --</option>
+          <option value="Professor">Professor</option>
+          <option value="Associate Professor">Associate Professor</option>
+          <option value="Assistant Professor">Assistant Professor</option>
+          <option value="Lecturer / Guest Faculty">Lecturer / Guest Faculty</option>
+          <option value="Other">Other</option>
+        </select>
+      </div>
+    </div>
+
+    <div class="grid-2">
+      <div class="form-group">
+        <label for="department">Department <span class="req">*</span></label>
+        <input type="text" id="department" name="department" required placeholder="e.g., Computer Science & Engineering" />
+      </div>
+
+      <div class="form-group">
+        <label for="email">Official Email ID <span class="req">*</span></label>
+        <input type="email" id="email" name="email" required placeholder="faculty@institution.edu" />
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label for="metricCategory">Criterion / Metric Category <span class="req">*</span></label>
+      <select id="metricCategory" name="metricCategory" required>
+        <option value="">-- Select Relevant Metric --</option>
+        <option value="Constitutional Obligations (Values, rights, duties & responsibilities)">
+          Sensitisation programs on Constitutional Obligations (Values, rights, duties & responsibilities of citizens)
+        </option>
+        <option value="Promotion of Gender Equity (QLM)">
+          Measures initiated by the Department for the promotion of Gender Equity (QLM)
+        </option>
+      </select>
+    </div>
+
+    <div class="form-group">
+      <label for="programTitle">Title of the Program / Measure Initiated <span class="req">*</span></label>
+      <input type="text" id="programTitle" name="programTitle" required placeholder="e.g., Workshop on Fundamental Duties / Gender Sensitisation Cell Drive" />
+    </div>
+
+    <div class="grid-2">
+      <div class="form-group">
+        <label for="eventDate">Date / Academic Year <span class="req">*</span></label>
+        <input type="text" id="eventDate" name="eventDate" required placeholder="e.g., 15-08-2025 or AY 2025-26" />
+      </div>
+
+      <div class="form-group">
+        <label for="targetAudience">Target Audience <span class="req">*</span></label>
+        <select id="targetAudience" name="targetAudience" required>
+          <option value="">-- Select Audience --</option>
+          <option value="Students">Students</option>
+          <option value="Employees / Faculty">Employees / Faculty</option>
+          <option value="Both Students and Employees">Both Students and Employees</option>
+        </select>
+      </div>
+    </div>
+
+    <div class="grid-2">
+      <div class="form-group">
+        <label for="participantsCount">Number of Participants <span class="req">*</span></label>
+        <input type="number" id="participantsCount" name="participantsCount" min="0" required placeholder="e.g., 120" />
+      </div>
+
+      <div class="form-group">
+        <label for="documentLink">Supporting Document Link (Google Drive)</label>
+        <input type="url" id="documentLink" name="documentLink" placeholder="https://drive.google.com/..." />
+        <span class="helper-text">Upload report, photos, & attendance PDF to Drive and paste shareable link here.</span>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label for="description">Qualitative Description (QLM Write-up) <span class="req">*</span></label>
+      <textarea id="description" name="description" required placeholder="Provide a clear summary of objectives, resource persons, activities conducted, and outcomes achieved (100–300 words recommended for NAAC QLM)..."></textarea>
+    </div>
+
+    <button type="submit" id="submitBtn">Submit Departmental Data</button>
+    <div id="statusMessage"></div>
+  </form>
+</div>
+
+<script>
+  // PASTE YOUR GOOGLE APPS SCRIPT WEB APP URL BELOW
+  const SCRIPT_URL = 'YOUR_GOOGLE_APPS_SCRIPT_WEB_APP_URL';
+
+  const form = document.getElementById('naacForm');
+  const submitBtn = document.getElementById('submitBtn');
+  const statusMessage = document.getElementById('statusMessage');
+
+  form.addEventListener('submit', function(e) {
+    e.preventDefault();
+
+    if (SCRIPT_URL === 'YOUR_GOOGLE_APPS_SCRIPT_WEB_APP_URL' || !SCRIPT_URL) {
+      showStatus('Configuration Error: Please set your Google Apps Script URL in the HTML file.', 'error');
+      return;
+    }
+
+    submitBtn.disabled = true;
+    submitBtn.textContent = 'Submitting...';
+    statusMessage.style.display = 'none';
+
+    const formData = new FormData(form);
+    const payload = Object.fromEntries(formData.entries());
+
+    // Using text/plain avoids CORS preflight issues with Google Apps Script
+    fetch(SCRIPT_URL, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'text/plain;charset=utf-8',
+      },
+      body: JSON.stringify(payload)
+    })
+    .then(response => response.json())
+    .then(data => {
+      if (data.status === 'success') {
+        showStatus('Thank you! Your response has been recorded in the Google Sheet.', 'success');
+        form.reset();
+      } else {
+        showStatus('Error saving data: ' + data.message, 'error');
+      }
+    })
+    .catch(error => {
+      showStatus('Network error occurred. Please check your connection and try again.', 'error');
+      console.error('Error:', error);
+    })
+    .finally(() => {
+      submitBtn.disabled = false;
+      submitBtn.textContent = 'Submit Departmental Data';
+    });
+  });
+
+  function showStatus(message, type) {
+    statusMessage.textContent = message;
+    statusMessage.className = type;
+    statusMessage.style.display = 'block';
+  }
+</script>
+
+</body>
+</html>
